@@ -80,7 +80,12 @@ include_directories(
   ${QT_INCLUDES}
   ${CMAKE_BINARY_DIR}
   ${CMAKE_SOURCE_DIR}
+
+  # TODO: These paths should be removed so we can be sure plugins don't include non-public headers
   ${CMAKE_SOURCE_DIR}/core
+  ${CMAKE_SOURCE_DIR}/common
+  ${CMAKE_SOURCE_DIR}/interfaces
+
   ${CMAKE_SOURCE_DIR}/3rdparty
   ${CMAKE_SOURCE_DIR}/3rdparty/kde
 )
@@ -197,11 +202,9 @@ set(gammaray_srcs
   core/objecttreemodel.cpp
   core/connectionmodel.cpp
   core/connectionfilterproxymodel.cpp
-  core/util.cpp
   core/methodinvocationdialog.cpp
   core/methodargumentmodel.cpp
   core/multisignalmapper.cpp
-  core/singlecolumnobjectproxymodel.cpp
   core/toolmodel.cpp
   core/proxydetacher.cpp
   core/proxytoolfactory.cpp
@@ -264,11 +267,6 @@ set(gammaray_srcs
   tools/styleinspector/styleelementstatetablepage.cpp
   tools/styleinspector/complexcontrolmodel.cpp
   tools/styleinspector/dynamicproxystyle.cpp
-
-  3rdparty/kde/kidentityproxymodel.cpp
-  3rdparty/kde/krecursivefilterproxymodel.cpp
-  3rdparty/kde/kfilterproxysearchline.cpp
-  3rdparty/qt/resourcemodel.cpp
 
   hooking/abstractfunctionoverwriter.cpp
   hooking/functionoverwriterfactory.cpp
@@ -337,6 +335,7 @@ if(BUILD_TIMER_PLUGIN AND NOT WIN32 AND NOT APPLE)
   target_link_libraries(gammaray_probe rt)
 endif()
 target_link_libraries(gammaray_probe
+  gammaray_common
   ${QT_QTCORE_LIBRARIES}
   ${QT_QTGUI_LIBRARIES}
 )
@@ -400,5 +399,6 @@ endif()
 
 include(ExternalProject)
 
+add_subdirectory(common)
 add_subdirectory(tests)
 add_subdirectory(tools)

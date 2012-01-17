@@ -4,15 +4,13 @@ include_directories(
 
 set(gammaray_scriptenginedebugger_plugin_srcs
   scriptenginedebugger.cpp
-  ${CMAKE_SOURCE_DIR}/core/singlecolumnobjectproxymodel.cpp
-  ${CMAKE_SOURCE_DIR}/core/util.cpp
-  ../../3rdparty/kde/kidentityproxymodel.cpp
 )
 qt4_automoc(${gammaray_scriptenginedebugger_plugin_srcs})
 qt4_wrap_ui(gammaray_scriptenginedebugger_plugin_srcs scriptenginedebugger.ui)
 
 gammaray_add_plugin(gammaray_scriptenginedebugger_plugin gammaray_scriptenginedebugger.desktop ${gammaray_scriptenginedebugger_plugin_srcs})
 target_link_libraries(gammaray_scriptenginedebugger_plugin
+  gammaray_common
   ${QT_QTCORE_LIBRARIES}
   ${QT_QTGUI_LIBRARIES}
   ${QT_QTSCRIPT_LIBRARIES}
