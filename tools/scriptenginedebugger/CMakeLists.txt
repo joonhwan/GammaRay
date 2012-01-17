@@ -4,8 +4,8 @@ include_directories(
 
 set(gammaray_scriptenginedebugger_plugin_srcs
   scriptenginedebugger.cpp
-  ../../singlecolumnobjectproxymodel.cpp
-  ../../util.cpp
+  ${CMAKE_SOURCE_DIR}/core/singlecolumnobjectproxymodel.cpp
+  ${CMAKE_SOURCE_DIR}/core/util.cpp
   ../../3rdparty/kde/kidentityproxymodel.cpp
 )
 qt4_automoc(${gammaray_scriptenginedebugger_plugin_srcs})

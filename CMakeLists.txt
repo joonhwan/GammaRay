@@ -80,6 +80,7 @@ include_directories(
   ${QT_INCLUDES}
   ${CMAKE_BINARY_DIR}
   ${CMAKE_SOURCE_DIR}
+  ${CMAKE_SOURCE_DIR}/core
   ${CMAKE_SOURCE_DIR}/3rdparty
   ${CMAKE_SOURCE_DIR}/3rdparty/kde
 )
@@ -178,15 +179,36 @@ find_package(Graphviz)
 find_package(VTK)
 
 set(gammaray_srcs
-  mainwindow.cpp
-  metaobject.cpp
-  metaobjectrepository.cpp
-  metaproperty.cpp
-  metapropertymodel.cpp
-  pluginmanager.cpp
-  probe.cpp
+  core/mainwindow.cpp
+  core/metaobject.cpp
+  core/metaobjectrepository.cpp
+  core/metaproperty.cpp
+  core/metapropertymodel.cpp
+  core/pluginmanager.cpp
+  core/probe.cpp
+  core/proxydetacher.cpp
+  core/objectlistmodel.cpp
+  core/objectpropertymodel.cpp
+  core/objectdynamicpropertymodel.cpp
+  core/objectstaticpropertymodel.cpp
+  core/objectclassinfomodel.cpp
+  core/objectmethodmodel.cpp
+  core/objectenummodel.cpp
+  core/objecttreemodel.cpp
+  core/connectionmodel.cpp
+  core/connectionfilterproxymodel.cpp
+  core/util.cpp
+  core/methodinvocationdialog.cpp
+  core/methodargumentmodel.cpp
+  core/multisignalmapper.cpp
+  core/singlecolumnobjectproxymodel.cpp
+  core/toolmodel.cpp
+  core/proxydetacher.cpp
+  core/proxytoolfactory.cpp
+  core/sidepane.cpp
+  core/palettemodel.cpp
+  core/propertywidget.cpp
 
-  propertywidget.cpp
   propertyeditor/propertycoloreditor.cpp
   propertyeditor/propertydoublepaireditor.cpp
   propertyeditor/propertyeditorfactory.cpp
@@ -196,29 +218,12 @@ set(gammaray_srcs
   propertyeditor/propertypaletteeditor.cpp
   propertyeditor/palettedialog.cpp
 
-  proxydetacher.cpp
-  objectlistmodel.cpp
-  objectpropertymodel.cpp
-  objectdynamicpropertymodel.cpp
-  objectstaticpropertymodel.cpp
-  objectclassinfomodel.cpp
-  objectmethodmodel.cpp
-  objectenummodel.cpp
-  objecttreemodel.cpp
-  connectionmodel.cpp
-  connectionfilterproxymodel.cpp
-  tools/sceneinspector/scenemodel.cpp
-  util.cpp
-  tools/widgetinspector/widgetpreviewwidget.cpp
-  methodinvocationdialog.cpp
-  methodargumentmodel.cpp
-  multisignalmapper.cpp
-  singlecolumnobjectproxymodel.cpp
   tools/modelinspector/modeltester.cpp
   tools/modelinspector/modelmodel.cpp
   tools/modelinspector/modelcellmodel.cpp
   tools/sceneinspector/graphicsview.cpp
   tools/sceneinspector/graphicssceneview.cpp
+  tools/sceneinspector/scenemodel.cpp
   tools/metatypebrowser/metatypesmodel.cpp
   tools/fontbrowser/fontmodel.cpp
   tools/localeinspector/localemodel.cpp
@@ -230,11 +235,6 @@ set(gammaray_srcs
   tools/textdocumentinspector/textdocumentcontentview.cpp
   tools/messagehandler/messagehandler.cpp
   tools/messagehandler/messagemodel.cpp
-  toolmodel.cpp
-  proxydetacher.cpp
-  proxytoolfactory.cpp
-  sidepane.cpp
-  palettemodel.cpp
 
   tools/codecbrowser/codecbrowser.cpp
   tools/connectioninspector/connectioninspector.cpp
@@ -252,6 +252,7 @@ set(gammaray_srcs
   tools/widgetinspector/widgetinspector.cpp
   tools/widgetinspector/overlaywidget.cpp
   tools/widgetinspector/widgettreemodel.cpp
+  tools/widgetinspector/widgetpreviewwidget.cpp
   tools/styleinspector/styleinspector.cpp
   tools/styleinspector/pixelmetricmodel.cpp
   tools/styleinspector/standardiconmodel.cpp
@@ -297,9 +298,9 @@ endif()
 
 qt4_automoc(${gammaray_srcs})
 qt4_wrap_ui(gammaray_srcs
-  mainwindow.ui
-  propertywidget.ui
-  methodinvocationdialog.ui
+  core/mainwindow.ui
+  core/propertywidget.ui
+  core/methodinvocationdialog.ui
   propertyeditor/propertydoublepaireditor.ui
   propertyeditor/propertyextendededitor.ui
   propertyeditor/propertyintpaireditor.ui

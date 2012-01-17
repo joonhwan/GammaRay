@@ -17,7 +17,7 @@ set(gammaray_objectvisualizer_plugin_srcs
 
   ${CMAKE_SOURCE_DIR}/3rdparty/kde/kfilterproxysearchline.cpp
   ${CMAKE_SOURCE_DIR}/3rdparty/kde/krecursivefilterproxymodel.cpp
-  ${CMAKE_SOURCE_DIR}/util.cpp
+  ${CMAKE_SOURCE_DIR}/core/util.cpp
 )
 qt4_automoc(${gammaray_objectvisualizer_plugin_srcs})
 

@@ -4,8 +4,8 @@ include_directories(
 
 set(gammaray_webinspector_plugin_srcs
   webinspector.cpp
-  ../../singlecolumnobjectproxymodel.cpp
-  ../../util.cpp
+  ${CMAKE_SOURCE_DIR}/core/singlecolumnobjectproxymodel.cpp
+  ${CMAKE_SOURCE_DIR}/core/util.cpp
   ../../3rdparty/kde/kidentityproxymodel.cpp
 )
 qt4_automoc(${gammaray_webinspector_plugin_srcs})
